@@ -9,9 +9,7 @@ function centroids = computeCentroids(X, idx, K)
 %   centroids, where each row of centroids is the mean of the data points
 %   assigned to it.
 %
-% X = [ 1.8421,    4.6076;
-%     5.6586,    4.8000;
-%     6.3526,   3.2909];
+
 % Useful variables
 [m n] = size(X);
 
@@ -27,22 +25,16 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
-
-
-
-counter = zeros(K, 1);
+count = zeros(K, 1);
 
 for i = 1:m
     centroids(idx(i), :) = centroids(idx(i), :) + X(i, :);
-    counter(idx(i)) = counter(idx(i)) + 1;
+    count(idx(i)) = count(idx(i)) + 1;
 end
-
-disp(centroids)
 
 for i = 1:K
-    centroids(i, :) = centroids(i, :) / counter(i);
+    centroids(i, :) = centroids(i, :) / count(i);
 end
-
 
 % =============================================================
 
